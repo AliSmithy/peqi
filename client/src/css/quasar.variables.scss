@@ -1,0 +1,198 @@
+/*
+	Theme variables for Quasar
+
+	Approach:
+	- Define CSS custom properties for the light theme in :root.
+	- Override those properties inside the .q-dark selector for dark theme.
+	- Keep SCSS $ variables mapping to the CSS vars with a fallback so existing
+		code that imports these SCSS variables continues to work.
+
+	Usage:
+	- Quasar applies the `q-dark` class automatically when using its dark mode
+		utilities (or you can toggle it manually on <html> or <body>).
+	- Components that use the SCSS $variables will receive the runtime value via
+		the CSS custom properties because the SCSS variables fallback to var(...).
+	- To change theme colors, edit the values in :root (light) or .q-dark (dark).
+
+	Note: Keep the SCSS variables at the bottom of this file; they provide
+	backwards-compatible fallbacks for any existing imports in the app.
+*/
+
+/* Light theme (defaults) */
+.body--light {
+  background-color: #ececec;
+  --q-primary: #1a6fd4;
+  --q-primary-text: #ffffff;
+  /* light primary (was $primary) */
+  --q-secondary: #007a70;
+  --q-accent: #f07820;
+  // --q-dark: #212121;
+  // --q-dark-page: #121212;
+  --q-positive: #009523;
+  --q-negative: #8c0010;
+  --q-info: #068fde;
+  --q-warning: #d59c00;
+  --q-drawer-bg: #0c4657;
+  --q-drawer-fg: #f1f1f1;
+  --drawer-selected-bg: #1da7d2;
+  --drawer-selected-fg: #082e3a;
+  --q-toolbar-bg: color-mix(in srgb, rgb(0, 78, 138) 100%, white 2%);
+  --mainbar-bg: color-mix(in srgb, var(--q-primary) 85%, white 15%);
+  --table-top-bg: color-mix(in srgb, var(--q-primary) 20%, white 90%);
+  --table-top-fg: #082e3a;
+  --table-header-th: color-mix(in srgb, var(--q-primary) 50%, white 90%);
+  --table-selected-bg: color-mix(in srgb, var(--q-warning) 5%, white 70%);
+  --table-selected-fg: black;
+  --dialog-bar-bg: color-mix(in srgb, rgb(0, 76, 123) 90%, black 10%);
+  --dialog-bar-fg: #ffffff;
+  --flow-bar-context-fg: color-mix(in srgb, var(--q-warning) 70%, white 30%);
+  --flow-bar-context-code-bg: color-mix(in srgb, var(--q-warning) 22%, transparent);
+  --flow-bar-nav-fg: var(--q-primary-text);
+  --flow-bar-nav-bg: color-mix(in srgb, var(--q-warning) 90%, transparent);
+  --flow-bar-nav-bg-hover: color-mix(in srgb, var(--q-warning) 100%, transparent);
+  --flow-workspace-bg: #f4f7f9;
+  --flow-steps-bg: color-mix(in srgb, var(--q-primary) 8%, white 92%);
+  --flow-steps-border: color-mix(in srgb, var(--q-primary) 22%, white 78%);
+  --flow-steps-muted: #004361;
+  --flow-steps-muted-bg: #eef2f4;
+  --flow-steps-track: #cfd8dc;
+  --flow-steps-selected: var(--q-primary);
+  --flow-steps-selected-fill: color-mix(in srgb, var(--q-primary) 18%, var(--flow-steps-muted-bg) 82%);
+  --flow-steps-selected-on: var(--q-primary);
+  --flow-steps-archive: #607d8b;
+  --flow-steps-archive-on: #ffffff;
+  --qa-table-border: rgba(0, 0, 0, 0.14);
+  --qa-table-band-bg: color-mix(in srgb, var(--q-primary) 22%, white 88%);
+  --qa-table-na-bg: rgba(53, 53, 53, 0.106);
+  --qa-table-na-fg: #757575;
+  --qa-table-header-bg: rgba(0, 0, 0, 0.03);
+  --qa-table-frozen-bg: rgba(0, 0, 0, 0.06);
+  --qa-table-editable-bg: color-mix(in srgb, var(--q-secondary) 10%, white 90%);
+  --qa-table-editable-fg: color-mix(in srgb, var(--q-primary) 70%, black 30%);
+  --qa-table-spacer-bg: #fff;
+  --qa-table-muted: #616161;
+}
+
+/* Dark theme overrides */
+.body--dark {
+  --q-primary: #005070 !important;
+  --q-primary-text: #ffffff;
+  --q-secondary: #007a70 !important;
+  --q-accent: #b000cf !important;
+  --q-dark: #00212e !important;
+  --q-dark-page: #121212 !important;
+  --q-positive: #00af29 !important;
+  --q-negative: #8c0010 !important;
+  --q-info: #023667 !important;
+  --q-warning: #d2a835 !important;
+  --q-drawer-bg: #002635;
+  --q-drawer-fg: #e8e8e8;
+  --drawer-selected-bg: #409ec3;
+  --drawer-selected-fg: #021d28;
+  --q-toolbar-bg: color-mix(in srgb, var(--q-primary) 85%, white 15%);
+  --mainbar-bg: color-mix(in srgb, var(--q-primary) 85%, white 15%);
+  --table-top-bg: color-mix(in srgb, var(--q-info) 85%, black 85%);
+  --table-top-fg: #082e3a;
+  --table-header-th: color-mix(in srgb, var(--q-info) 77%, black 23%);
+  --table-selected-bg: color-mix(in srgb, var(--q-warning) 5%, black 5%);
+  --table-selected-fg: white;
+  --dialog-bar-bg: color-mix(in srgb, var(--q-primary) 80%, black 40%);
+  --dialog-bar-fg: #ffffff;
+  --flow-bar-context-fg: color-mix(in srgb, var(--q-warning) 70%, white 30%);
+  --flow-bar-context-code-bg: color-mix(in srgb, var(--q-warning) 22%, transparent);
+  --flow-bar-nav-fg: var(--q-primary-text);
+  --flow-bar-nav-bg: color-mix(in srgb, var(--q-warning) 90%, transparent);
+  --flow-bar-nav-bg-hover: color-mix(in srgb, var(--q-warning) 100%, transparent);
+  --flow-workspace-bg: var(--q-dark-page);
+  --flow-steps-bg: color-mix(in srgb, var(--q-primary) 30%, black 70%);
+  --flow-steps-border: color-mix(in srgb, var(--q-primary) 50%, black 50%);
+  --flow-steps-muted: var(--q-drawer-fg);
+  --flow-steps-muted-bg: color-mix(in srgb, var(--q-info) 40%, var(--q-dark-page) 60%);
+  --flow-steps-track: color-mix(in srgb, var(--q-drawer-fg) 35%, black 65%);
+  --flow-steps-selected: var(--drawer-selected-bg);
+  --flow-steps-selected-fill: var(--drawer-selected-bg);
+  --flow-steps-selected-on: var(--drawer-selected-fg);
+  --flow-steps-archive: #90a4ae;
+  --flow-steps-archive-on: #021d28;
+  --qa-table-border: rgba(255, 255, 255, 0.18);
+  --qa-table-na-bg: rgba(255, 255, 255, 0.011);
+  --qa-table-na-fg: #8e8e8e;
+  --qa-table-band-bg: var(--table-header-th);
+  --qa-table-header-bg: rgba(255, 255, 255, 0.04);
+  --qa-table-frozen-bg: rgba(255, 255, 255, 0.07);
+  --qa-table-editable-bg: color-mix(in srgb, var(--q-secondary) 30%, var(--q-dark-page) 70%);
+  --qa-table-editable-fg: color-mix(in srgb, var(--q-secondary) 50%, white 50%);
+  --qa-table-spacer-bg: var(--q-dark-page);
+  --qa-table-muted: color-mix(in srgb, var(--q-drawer-fg) 75%, transparent);
+}
+
+/* SCSS variables maintain backwards compatibility and use the CSS variables with fallbacks */
+$primary: var(--q-primary, #085237);
+$secondary: var(--q-secondary, #00635a);
+$accent: var(--q-accent, #520061);
+$dark: var(--q-dark, #212121);
+$dark-page: var(--q-dark-page, #121212);
+$positive: var(--q-positive, #006117);
+$negative: var(--q-negative, #5e000b);
+$info: var(--q-info, #007b94);
+$warning: var(--q-warning, #805e00);
+
+$btn-colors: (
+  new: (color: $primary, weight: 30),
+  edit: (color: $info, weight: 30),
+  delete: (color: $negative, weight: 50),
+  save: (color: $positive, weight: 30),
+  cancel: (color: $dark, weight: 50)
+);
+
+@each $name, $cfg in $btn-colors {
+  .btn-#{$name} {
+    $btn-color: map-get($cfg, color);
+    $btn-weight: map-get($cfg, weight);
+    background-color: unquote("color-mix(in srgb, #{$btn-color} 100%, white #{$btn-weight}%)");
+    color: var(--q-primary-text);
+  }
+}
+
+.dialog-bar {
+  background-color: var(--dialog-bar-bg);
+  color: var(--dialog-bar-fg);
+}
+
+.fg-primary {
+  color: var(--q-primary-text);
+}
+
+.q-drawer {
+  background-color: var(--q-drawer-bg);
+}
+
+.q-drawer .q-item {
+  color: var(--q-drawer-fg);
+}
+
+.q-drawer .q-separator {
+  background-color: color-mix(in srgb, var(--q-drawer-fg) 15%, white 15%);
+}
+
+.q-router-link--active {
+  background-color: var(--drawer-selected-bg);
+  color: var(--drawer-selected-fg) !important;
+  border-radius: 0px 50px 10px 0px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-right: 1px;
+}
+
+.q-toolbar {
+  background-color: var(--q-toolbar-bg);
+}
+
+.main-bar {
+  background-color: var(--mainbar-bg);
+}
+
+.notif {
+  margin: 2px 50px 0 50px;
+  width: 305px;
+  font-size: 0.9em;
+}

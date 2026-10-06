@@ -1,0 +1,329 @@
+@font-face {
+  font-family: 'Vazir';
+  src: url('../assets/font/Vazir.woff'), url('../assets/font/Vazir.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('../assets/font/Vazir-Thin.woff'), url('../assets/font/Vazir-Thin.woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('../assets/font/Vazir-Light.woff'), url('../assets/font/Vazir-Light.woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('../assets/font/Vazir-Medium.woff'), url('../assets/font/Vazir-Medium.woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('../assets/font/Vazir-Bold.woff'), url('../assets/font/Vazir-Bold.woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Vazir', sans-serif;
+  font-weight: normal;
+}
+
+// SYSio brand letter colors — readable on both themes
+.body--light {
+  --sysio-i: #0a7a2f;
+  --sysio-o: #c62828;
+}
+
+.body--dark {
+  --sysio-i: #4caf50;
+  --sysio-o: #ef5350;
+
+  .disabled-form {
+    background-color: color-mix(in srgb, $primary 10%, white 10%);
+    border-radius: inherit;
+  }
+}
+
+.sysio-brand {
+  direction: ltr;
+
+  .sysio-i {
+    color: var(--sysio-i);
+  }
+
+  .sysio-o {
+    color: var(--sysio-o);
+  }
+
+  &--hero {
+    font-size: 5rem;
+    font-weight: bold;
+    line-height: 1;
+  }
+}
+
+.loading-background {
+  z-index: 3;
+  background-color: color-mix(in srgb, var(--q-info) 25%, white 15%);
+  border-radius: inherit;
+}
+
+// .loading-background>* {
+//   position: absolute;
+//   top: 70px;
+// }
+
+.disabled-form {
+  z-index: 1000;
+  background-color: color-mix(in srgb, $primary 10%, black 1%);
+  border-radius: inherit;
+}
+
+.q-btn.disabled {
+  opacity: 0.3 !important;
+}
+
+/*
+  Editable text fields / textareas — QA results table + subtables only (.qa-table / embed).
+  Tint the field control itself. Skip .is-na rows/cells. Checkboxes/toggles left alone.
+*/
+.qa-table tr:not(.is-na) > td:not(.qa-table__embed):not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__control,
+.qa-table__embed table tr:not(.is-na) > td:not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__control {
+  background: var(--qa-table-editable-bg);
+  border-radius: 4px;
+}
+
+.qa-table tr:not(.is-na) > td:not(.qa-table__embed):not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__native,
+.qa-table__embed table tr:not(.is-na) > td:not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__native {
+  padding-left: 6px;
+}
+
+.qa-table tr:not(.is-na) > td:not(.qa-table__embed):not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea).q-field--focused .q-field__control,
+.qa-table__embed table tr:not(.is-na) > td:not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea).q-field--focused .q-field__control {
+  background: color-mix(in srgb, var(--qa-table-editable-bg) 90%, black 10%);
+}
+
+.body--dark .qa-table tr:not(.is-na) > td:not(.qa-table__embed):not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea).q-field--focused .q-field__control,
+.body--dark .qa-table__embed table tr:not(.is-na) > td:not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea).q-field--focused .q-field__control {
+  background: color-mix(in srgb, var(--qa-table-editable-bg) 90%, white 10%);
+}
+
+/* Textareas inside QA embeds (e.g. remarks under subtables) */
+.qa-table__embed .q-textarea:not(.q-field--disabled) .q-field__control {
+  background: var(--qa-table-editable-bg);
+  border-radius: 4px;
+}
+
+.qa-table__embed .q-textarea:not(.q-field--disabled) .q-field__control:before {
+  background: var(--qa-table-editable-bg) !important;
+  border-radius: 4px;
+}
+
+.qa-table__embed .q-textarea:not(.q-field--disabled) .q-field__native {
+  padding-left: 6px;
+}
+
+.qa-table__embed .q-textarea:not(.q-field--disabled).q-field--focused .q-field__control:before {
+  background: color-mix(in srgb, var(--qa-table-editable-bg) 90%, black 10%) !important;
+}
+
+.body--dark .qa-table__embed .q-textarea:not(.q-field--disabled).q-field--focused .q-field__control:before {
+  background: color-mix(in srgb, var(--qa-table-editable-bg) 90%, white 10%) !important;
+}
+
+/* Outlined single-line DraftInputs in embed (remark rows under subtables) */
+.qa-table__embed > .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__control,
+.qa-table__embed .row .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__control {
+  background: var(--qa-table-editable-bg);
+  border-radius: 4px;
+}
+
+.qa-table__embed > .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__native,
+.qa-table__embed .row .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__native {
+  padding-left: 6px;
+}
+
+/* No editable tint inside NA rows/cells */
+.qa-table tr.is-na .q-field .q-field__control,
+.qa-table td.is-na .q-field .q-field__control,
+.qa-table__embed tr.is-na .q-field .q-field__control,
+.qa-table__embed td.is-na .q-field .q-field__control,
+.qa-table tr.is-na .q-textarea .q-field__control:before,
+.qa-table td.is-na .q-textarea .q-field__control:before,
+.qa-table__embed tr.is-na .q-textarea .q-field__control:before,
+.qa-table__embed td.is-na .q-textarea .q-field__control:before {
+  background: transparent !important;
+  border-radius: 0;
+}
+
+.qa-table tr.is-na .q-field .q-field__native,
+.qa-table td.is-na .q-field .q-field__native,
+.qa-table__embed tr.is-na .q-field .q-field__native,
+.qa-table__embed td.is-na .q-field .q-field__native {
+  padding-left: 0;
+}
+
+/*
+  Nested grids in question text slots (e.g. latch inertial tables) live inside
+  the answer cell — which gets .is-na when the Q/A is NA. Keep field chrome
+  on those inner tables anyway (seatstatic embeds are a separate row and never
+  inherit that).
+*/
+.qa-table__text table tr:not(.is-na) > td:not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__control {
+  background: var(--qa-table-editable-bg) !important;
+  border-radius: 4px;
+}
+
+.qa-table__text table tr:not(.is-na) > td:not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea) .q-field__native {
+  padding-left: 6px;
+}
+
+.qa-table__text table tr:not(.is-na) > td:not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea).q-field--focused .q-field__control {
+  background: color-mix(in srgb, var(--qa-table-editable-bg) 90%, black 10%) !important;
+}
+
+.body--dark .qa-table__text table tr:not(.is-na) > td:not(.is-na) .q-field:not(.q-field--disabled):not(.q-textarea).q-field--focused .q-field__control {
+  background: color-mix(in srgb, var(--qa-table-editable-bg) 90%, white 10%) !important;
+}
+
+/*
+  Read-only mode inside QA table / embeds only.
+  Dark-blue fg so entered values stay distinct from frozen labels.
+*/
+.qa-table .draft-input--readonly,
+.qa-table__embed .draft-input--readonly {
+  color: var(--qa-table-editable-fg);
+}
+
+.qa-table .qa-answer-value,
+.qa-table__embed .qa-answer-value {
+  color: var(--qa-table-editable-fg);
+}
+
+.qa-table .qa-answer-value.text-positive,
+.qa-table__embed .qa-answer-value.text-positive {
+  color: var(--q-positive);
+}
+
+.qa-table .qa-answer-value.text-negative,
+.qa-table__embed .qa-answer-value.text-negative {
+  color: var(--q-negative);
+}
+
+.qa-table .qa-answer-value.text-grey-5,
+.qa-table .qa-answer-value.text-grey-7,
+.qa-table__embed .qa-answer-value.text-grey-5,
+.qa-table__embed .qa-answer-value.text-grey-7 {
+  color: var(--qa-table-muted);
+}
+
+.qa-table tr.is-na .draft-input--readonly,
+.qa-table td.is-na .draft-input--readonly,
+.qa-table tr.is-na .qa-answer-value,
+.qa-table td.is-na .qa-answer-value,
+.qa-table .is-na .qa-answer-value,
+.qa-table__embed tr.is-na .draft-input--readonly,
+.qa-table__embed td.is-na .draft-input--readonly,
+.qa-table__embed tr.is-na .qa-answer-value,
+.qa-table__embed td.is-na .qa-answer-value {
+  color: var(--qa-table-na-fg);
+}
+
+.q-table {
+  tr.selected {
+    background-color: var(--table-selected-bg) !important;
+    color: var(--table-selected-fg) !important;
+  }
+}
+
+.zen-table {
+  padding: 0 !important;
+
+  .q-table__top,
+  .q-table__bottom,
+  thead tr:first-child th {
+    background-color: var(--table-top-bg);
+    color: var(--q-table-top-fg);
+  }
+
+  thead tr th {
+    position: sticky;
+    z-index: 1;
+  }
+
+  thead tr:first-child th {
+    top: 0;
+    background-color: var(--table-header-th);
+  }
+
+  tbody {
+    user-select: none;
+    scroll-margin-top: 48px;
+  }
+
+  .q-tr.willdel-row {
+    position: relative;
+  }
+
+  .q-tr.willdel-row::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    z-index: 2;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(45deg, rgba(150, 30, 30, 0.5) 0 1px, transparent 3px 70px),
+      repeating-linear-gradient(135deg, rgba(150, 30, 30, 0.5) 0 1px, transparent 3px 70px),
+      linear-gradient(180deg,
+        rgba(0, 0, 0, 0) calc(50% - 1px),
+        rgba(150, 30, 30, 0.5) calc(50%),
+        rgba(0, 0, 0, 0) calc(50% + 1px));
+  }
+}
+
+/*
+  QScrollArea RTL jump:
+  In RTL, Quasar CSS sets left:0 on the bar/thumb, but JS always writes inline
+  right:0 on the thumb. With direction:rtl, CSS ignores `left` when both edges
+  + width are set - bar on left, thumb on right (jumps on scroll).
+
+  Make the scrollarea positioning context LTR so left/right resolve consistently,
+  restore RTL on the content, and pin bar+thumb to the same physical edge.
+
+  Rule-level rtl:ignore comments (same pattern as elsewhere in this repo).
+  Sass strips declaration-level ignore comments; for those use SCSS interpolation.
+*/
+
+/* rtl:ignore */
+[dir="rtl"] .q-scrollarea {
+  direction: ltr;
+}
+
+/* rtl:ignore */
+[dir="rtl"] .q-scrollarea__content {
+  direction: rtl;
+}
+
+/* rtl:ignore */
+[dir="rtl"] .q-scrollarea__bar--v,
+[dir="rtl"] .q-scrollarea__thumb--v {
+  left: 0 !important;
+  right: auto !important;
+}
+
+/* rtl:ignore */
+[dir="ltr"] .q-scrollarea__bar--v,
+[dir="ltr"] .q-scrollarea__thumb--v {
+  right: 0 !important;
+  left: auto !important;
+}

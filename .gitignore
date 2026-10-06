@@ -1,0 +1,15 @@
+node_modules/
+upload/
+dist/
+reports/excel/
+api/reports/result.html
+logs/
+.vscode/
+*.zip
+*.7z
+*.pfx
+design/*.sql
+design/*.qea-journal
+tmp/
+backup/restore-*/
+restore-*/
